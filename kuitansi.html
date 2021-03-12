@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kuitansi</title>
+    <link rel="stylesheet" href="css/kuitansi.css" />
+  </head>
+  <body>
+    <div id="app" class="wrapper">
+      <div class="containerone">
+        <h2>FORM INPUT</h2>
+        <form class="form" action="">
+          <label for="inputnama">Nama</label>
+          <input id="inputnama" type="text" v-model="inputnama" />
+
+          <label for="tanggal">Tanggal</label>
+          <input id="tanggal" type="date" v-model="tanggal" />
+
+          <label for="pilih">Pilih jumlah pembayaran</label>
+          <select id="pilih" v-model="pilihnominal">
+            <option value="">---</option>
+            <option value="Rp. 9.000.000,-">
+              Rp. 9.324.000,- (Standart L)
+            </option>
+            <option value="Rp. 9.484.000,-">
+              Rp. 9.484.000,- (Standart P)
+            </option>
+            <option value="Rp. 9.049.000,-">Rp. 9.049.000,- (Kakak 1 L)</option>
+            <option value="Rp. 9.209.000,-">Rp. 9.209.000,- (Kakak 1 P)</option>
+            <option value="Rp. 8.774.000,-">Rp. 8.774.000,- (Kakak 2 L)</option>
+            <option value="Rp. 8.934.000,-">Rp. 8.934.000,- (Kakak 2 P)</option>
+            <option value="Rp. 8.499.000,-">Rp. 8.499.000,- (Lain" 1 L)</option>
+            <option value="Rp. 8.659.000,-">Rp. 8.659.000,- (Lain" 1 P)</option>
+            <option value="Rp. 8.158.000,-">Rp. 8.158.000,- (Lain" 2 L)</option>
+            <option value="Rp. 8.318.000,-">Rp. 8.318.000,- (Lain" 2 P)</option>
+            <option value="Rp. 2.344.000,-">Rp. 2.344.000,- (Lain" 3 L)</option>
+            <option value="Rp. 2.504.000,-">Rp. 2.504.000,- (Lain" 3 P)</option>
+            <option value="Rp. 3.569.000,-">Rp. 3.569.000,- (Lain" 4 P)</option>
+            <option value="Rp. 5.634.000,-">Rp. 5.634.000,- (Lain" 5 P)</option>
+          </select>
+        </form>
+
+        <a href="#page" v-on:click="showhasil">Lihat Hasil</a>
+        <a href="#page" onclick="javascript:createpdf();">Cetak PDF</a>
+        <p class="petunjuk">
+          NB: klik "Lihat Hasil" dahulu, kemudian klik "Cetak PDF"
+        </p>
+      </div>
+
+      <div id="cetak" class="containertwo">
+        <div class="header">
+          <img id="logo" src="img/logo.png" alt="logo" />
+          <div>
+            <p class="title">SDIT Harapan Umat Jember <br /></p>
+            <p>Jl. Danau Toba, Gg. Islamic Center Jember</p>
+          </div>
+        </div>
+        <hr />
+        <div class="bill">
+          <h2>KUITANSI PEMBAYARAN</h2>
+          <div>
+            <table>
+              <tr>
+                <td>Sudah Terima dari</td>
+                <td>:</td>
+                <td class="nama">{{name}}</td>
+              </tr>
+              <tr>
+                <td>Banyaknya uang</td>
+                <td>:</td>
+                <td class="uang">{{nominal}}</td>
+              </tr>
+              <tr>
+                <td>Untuk Pembayaran</td>
+                <td>:</td>
+                <td>Daftar ulang siswa baru</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="ttd">
+          <p>Jember, {{custom(tanggal)}}</p>
+          <p class="kanantengah">Keu. SDIT Harum</p>
+        </div>
+        <div class="lunas">
+          <p>LUNAS</p>
+        </div>
+        <img id="stam" class="stam" src="img/stam.png" alt="stempel" />
+      </div>
+    </div>
+
+    <script src="js/vue.min.2.6.12.js"></script>
+    <script src="js/jspdf.min.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+
+    <script>
+      function createpdf() {
+        var pdf = new jsPDF("l", "pt", "a5", true);
+        var rcetak = document.getElementById("cetak");
+        // var png2 = document.getElementById("stam");
+        // pdf.addImage(png2, "PNG", 0, 0, 485, 270, undefined, "FAST");
+        pdf.html(rcetak, {
+          callback: function () {
+            pdf.save("kuitansi.pdf");
+          },
+        });
+      }
+    </script>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          name: "{{nama}}",
+          inputnama: "",
+          nominal: "{{nominal}}",
+          pilihnominal: "",
+          tanggal: "",
+          dua: "",
+        },
+
+        methods: {
+          showhasil: function () {
+            this.name = this.inputnama;
+            this.nominal = this.pilihnominal;
+          },
+
+          custom(tanggal) {
+            return moment(tanggal).locale("id").format("DD MMMM YYYY");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

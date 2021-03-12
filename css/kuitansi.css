@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* bagian kiri */
+
+.containerone {
+  width: 30vw;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 3px solid #f39c12;
+  border-radius: 10px;
+}
+.containerone h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  color: #f39c12;
+  text-align: center;
+}
+
+.form {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 3px;
+}
+.form label {
+  color: #f39c12;
+  font-size: 18px;
+}
+
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 13px 0px;
+  padding: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+.form select {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 13px 0px;
+  padding: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+a {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #f39c12;
+  text-align: center;
+  color: #fefefe;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #e67e22;
+}
+
+.petunjuk {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.date {
+  width: 100%;
+}
+
+/* bagian kanan */
+
+#cetak {
+  width: 546.4px;
+  height: 350px;
+  margin-top: 20px;
+  margin-left: 10px;
+  position: relative;
+}
+.containertwo {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 3px solid #f39c12;
+}
+.header {
+  height: 50px;
+  display: flex;
+  justify-content: left;
+}
+
+.header img {
+  width: 50px;
+  height: 50px;
+}
+.header div {
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #f39c12;
+}
+
+hr {
+  margin: 15px 0;
+  height: 4px;
+  background-color: #f39c12;
+  border: none;
+}
+
+.bill h2 {
+  text-align: center;
+  color: #f39c12;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.bill table {
+  font-size: 18px;
+  width: 100%;
+}
+.bill table tr td {
+  padding: 5px 0;
+}
+.nama {
+  font-size: 23px;
+}
+.uang {
+  background-color: #f39c12;
+  color: #fefefe;
+  font-size: 23px;
+  font-weight: bolder;
+}
+
+.ttd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+  text-align: center;
+}
+
+.kanantengah {
+  margin-top: 50px;
+}
+
+.stam {
+  position: absolute;
+  top: 71%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+}
+
+.lunas {
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  padding: 5px 18px;
+  transform: translateX(-50%);
+  font-size: 32px;
+  font-weight: 600;
+  color: #f39c12;
+  border: 3px solid #f39c12;
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+    padding: 10px;
+    height: auto;
+    flex-direction: column;
+  }
+  .containerone {
+    width: 85vw;
+    flex-direction: column-reverse;
+  }
+  .petunjuk {
+    margin-top: -3px;
+  }
+}

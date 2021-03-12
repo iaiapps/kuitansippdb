@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div id="app" class="wrapper">
+      <span v-html="salah"></span>
+      <div id="satu" class="containerone">
+        <h2>LOGIN KUITANSI</h2>
+
+        <form class="form" action="">
+          <label for="pass">Password</label>
+          <input id="pass" type="password" v-model="password" />
+        </form>
+        <a href="#" v-on:click="cekpass()">LOGIN</a>
+
+        <p class="petunjuk">NB: klik login untuk membuat kuitansi</p>
+      </div>
+    </div>
+    <script src="js/vue.min.2.6.12.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>
