@@ -4,128 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INVOICE</title>
-    <link rel="stylesheet" href="css/app.css" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <div id="app" class="wrapper">
+      <span v-html="salah"></span>
       <div id="satu" class="containerone">
-        <h2>FORM INPUT</h2>
+        <h2>LOGIN KUITANSI</h2>
 
         <form class="form" action="">
-          <label for="inputnama">Nama</label>
-          <input id="inputnama" type="text" v-model="inputnama" />
-
-          <label for="tanggal">Tanggal</label>
-          <input id="tanggal" type="date" v-model="inputtanggal" />
-
-          <label for="pilih">Pilih jumlah pembayaran</label>
-          <select id="pilih" v-model="pilihnominal">
-            <option value="">---</option>
-            <option value="Rp. 9.000.000,-">Rp. 9.000.000,-</option>
-            <option value="Rp. 10.000.000,-">Rp. 10.000.000,-</option>
-            <option value="Rp. 11.000.000,-">Rp. 11.000.000,-</option>
-          </select>
+          <label for="pass">Password</label>
+          <input id="pass" type="password" v-model="password" />
         </form>
+        <a href="#" v-on:click="cekpass()">LOGIN</a>
 
-        <a href="#page" v-on:click="showname">Lihat Hasil</a>
-        <a href="#page" onclick="javascript:createpdf();">Cetak PDF</a>
-        <p class="petunjuk">
-          NB: klik "Lihat Hasil" dahulu, kemudian klik "Cetak PDF"
-        </p>
-      </div>
-      <div id="png">
-        <div id="cetak" class="containertwo">
-          <div class="header">
-            <p class="title">SDIT Harapan Umat Jember <br /></p>
-            <p class="tanggal">{{tanggal}}</p>
-          </div>
-          <div class="judul">
-            <h2>BUKTI PEMBAYARAN</h2>
-          </div>
-          <div class="page">
-            <p>atas nama</p>
-            <h2>{{name}}</h2>
-
-            <h3>PEMBAYARAN UANG MASUK SDIT</h3>
-          </div>
-          <div class="bill">
-            <h2>{{nominal}}</h2>
-            <p>LUNAS</p>
-          </div>
-          <p class="footer">Terimakasih</p>
-        </div>
+        <p class="petunjuk">NB: klik login untuk membuat kuitansi</p>
       </div>
     </div>
-    <!-- <a href="#page" id="download">Download</a> -->
-
     <script src="js/vue.min.2.6.12.js"></script>
-    <script src="js/jspdf.min.js"></script>
-    <script src="js/html2canvas.js"></script>
-
-    <script>
-      function createpdf() {
-        var pdf = new jsPDF("p", "pt", "a5");
-        var rcetak = document.getElementById("cetak");
-
-        pdf.html(rcetak, {
-          callback: function () {
-            pdf.save("kuitansi.pdf");
-          },
-        });
-      }
-    </script>
-
-    <!-- <script>
-      document
-        .getElementById("download")
-        .addEventListener("click", function () {
-          html2canvas(document.getElementById("png")).then(function (canvas) {
-            saveAs(canvas.toDataURL(), "kuitansi.png");
-          });
-        });
-
-      function saveAs(uri, filename) {
-        var link = document.createElement("a");
-
-        if (typeof link.download === "string") {
-          link.href = uri;
-          link.download = filename;
-
-          //Firefox requires the link to be in the body
-          document.body.appendChild(link);
-
-          //simulate click
-          link.click();
-
-          //remove the link when done
-          document.body.removeChild(link);
-        } else {
-          window.open(uri);
-        }
-      }
-    </script> -->
-
-    <script>
-      const vue = new Vue({
-        el: "#app",
-        data: {
-          name: "{{nama}}",
-          inputnama: "",
-          tanggal: "{{tanggal}}",
-          inputtanggal: "",
-          nominal: "{{nominal}}",
-          pilihnominal: "",
-        },
-
-        methods: {
-          showname: function () {
-            this.name = this.inputnama;
-            this.tanggal = this.inputtanggal;
-            this.nominal = this.pilihnominal;
-          },
-        },
-      });
-    </script>
+    <script src="js/login.js"></script>
   </body>
 </html>
